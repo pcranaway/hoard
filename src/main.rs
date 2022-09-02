@@ -5,6 +5,7 @@ use jsonrpsee_http_server::{HttpServerBuilder, RpcModule};
 pub mod args;
 pub mod state;
 pub mod download;
+pub mod source;
 
 #[tokio::main]
 async fn main() {

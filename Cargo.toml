@@ -9,3 +9,4 @@ edition = "2021"
 clap = { version = "3.2.20", features = ["derive"] }
 jsonrpsee-http-server = "0.15.1"
 tokio = {vertsion = "1", features = ["full"]}
+url = "2.2.2"

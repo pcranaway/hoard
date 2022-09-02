@@ -1,9 +1,6 @@
 use std::path::PathBuf;
 
-/// Source that can be used to download a file.
-pub enum Source {
-    Http(String)
-}
+use crate::source::{Source, self};
 
 /// Status of a [Download].
 pub enum Status {
@@ -14,7 +11,7 @@ pub enum Status {
 
 /// A download.
 pub struct Download {
-    pub sources: Vec<Source>,
+    pub source: Source,
     pub output: PathBuf,
 
     pub status: Status,
@@ -24,6 +21,22 @@ pub struct Download {
 }
 
 impl Download {
+
+    pub fn new(uri: String) -> Self {
+        let source = source::parse_source(uri);
+
+        Self {
+            source,
+            output: source.file_name(),
+            size: 0,
+            downloaded: 0,
+            status: Status::Idle
+        }
+    }
+
+    /// Fetch info about the download, without downloading it.
+    pub fn fetch() {}
+
     /// Calculates the percentage of how many bytes have been downloaded and how many bytes need to
     /// be downloaded.
     pub fn progress(&self) -> u8 {
