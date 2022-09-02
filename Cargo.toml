@@ -7,4 +7,5 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "3.2.20", features = ["derive"] }
+jsonrpsee-http-server = "0.15.1"
 tokio = {vertsion = "1", features = ["full"]}
