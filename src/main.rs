@@ -1,17 +1,10 @@
+use args::Args;
 use clap::Parser;
 use jsonrpsee_http_server::{HttpServerBuilder, RpcModule};
 
-#[derive(Parser, Debug)]
-#[clap(author, version, about, long_about = None)]
-struct Args {
-   /// Address for the RPC to listen to 
-   #[clap(short = 'h', long, value_parser, default_value = "0.0.0.0")]
-   rpc_address: String,
-
-    /// Port for the RPC to listen to 
-   #[clap(short = 'p', long, value_parser, default_value = "3820")]
-   rpc_port: u16,
-}
+pub mod args;
+pub mod state;
+pub mod download;
 
 #[tokio::main]
 async fn main() {
